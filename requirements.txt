@@ -1,1 +1,2 @@
+art==4.7
 python-gitlab==2.4.0

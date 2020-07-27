@@ -8,29 +8,31 @@ import time
 import gitlab
 import optparse
 import subprocess
-from . import settings
-from . import cli
+from .cli import Arguments
 from . import __version__ as VERSION
+
+from art import *
 
 def pname():
   return f"[gitlab-cloner - {str(os.getpid())}]"
 
 def main():
-  args = cli.Arguments(argv=None if sys.argv[1:] else ["--help"]).args
+  Art=text2art("GitLabRC")
+  print(Art)
+
+  args = Arguments(argv=None if sys.argv[1:] else ["--help"]).args
 
   if args.version:
-    print(VERSION)
+    print(f"Version: {VERSION}")
     sys.exit(0) 
 
-  clone(args)
+  perform(args)
 
-def clone(options):
+def perform(options):
 
-  config = settings.Config()
-
-  url = options.url if options.url else config.get_env("GITLAB_URL")
-  token = options.token if options.token else config.get_env("GITLAB_TOKEN")
-  namespace = options.namespace if options.namespace else None
+  url = options.url
+  token = options.token
+  namespace = options.namespace
 
   # TODO catch errrors
   if not url:
@@ -70,9 +72,7 @@ def clone(options):
     print(pname() + " found " + project.path_with_namespace)
 
   # Get all projects inside the subgroups
-  for group in gl.groups.list(
-    all=True, owned=True, query_parameters={"id": namespace}
-  ):
+  for group in gl.groups.list(all=True, owned=True, query_parameters={"id": namespace}):
 
     for project in group.projects.list(all=True):
       projects.append(project)

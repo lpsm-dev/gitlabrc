@@ -2,13 +2,13 @@
 
 import io
 import os
-from gitlabcr import __version__
+from gitlabrc import __version__
 from setuptools import setup, find_packages
 
 # Package meta-data.
-NAME              = "gitlabcr"
-DESCRIPTION       = "CLI to help you clone projects inside groups in Gitlab"
-URL               = "https://github.com/lpmatos/gitlab-clone-recursive"
+NAME              = "gitlabrc"
+DESCRIPTION       = "GitlabRC is a CLI that help you to clone all projects inside a specific namespace in Gitlab"
+URL               = "https://github.com/lpmatos/gitlabrc"
 EMAIL             = "luccapsm@gmail.com"
 AUTHOR            = "Lucca Pessoa da Silva Matos"
 REQUIRES_PYTHON   = ">=3.6.0"
@@ -19,6 +19,7 @@ REQUIRED = [
   "python-gitlab"
 ]
 
+# Getting current location of this file.
 here = os.path.abspath(os.path.dirname(__file__))
 
 # Import the README and use it as the long-description.
@@ -29,6 +30,7 @@ try:
 except FileNotFoundError:
   LONG_DESCRIPTION = DESCRIPTION
 
+# Build setup package.
 setup(
   name = NAME,
   version = VERSION,
@@ -45,7 +47,7 @@ setup(
   license = "MIT license",
   keywords = [
     "gitlab",
-    "gitlab-api",
+    "git",
     "cli",
     "python"
   ],
