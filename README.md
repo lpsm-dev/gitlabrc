@@ -9,32 +9,32 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/lpmatos/commitlint">
+  <a href="https://github.com/lpmatos/gitlab-clone">
     <img alt="Open Source" src="https://badges.frapsoft.com/os/v1/open-source.svg?v=102">
   </a>
 
-  <a href="https://github.com/lpmatos/commitlint">
-    <img alt="GitHub Language Count" src="https://img.shields.io/github/languages/count/lpmatos/commitlint">
+  <a href="https://github.com/lpmatos/gitlab-clone">
+    <img alt="GitHub Language Count" src="https://img.shields.io/github/languages/count/lpmatos/gitlab-clone">
   </a>
 
-  <a href="https://github.com/lpmatos/commitlint">
-    <img alt="GitHub Top Language" src="https://img.shields.io/github/languages/top/lpmatos/commitlint">
+  <a href="https://github.com/lpmatos/gitlab-clone">
+    <img alt="GitHub Top Language" src="https://img.shields.io/github/languages/top/lpmatos/gitlab-clone">
   </a>
 
-  <a href="https://github.com/lpmatos/commitlint/stargazers">
-    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/lpmatos/commitlint?style=social">
+  <a href="https://github.com/lpmatos/gitlab-clone/stargazers">
+    <img alt="GitHub Stars" src="https://img.shields.io/github/stars/lpmatos/gitlab-clone?style=social">
   </a>
 
-  <a href="https://github.com/lpmatos/commitlint/commits/master">
-    <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/lpmatos/commitlint">
+  <a href="https://github.com/lpmatos/gitlab-clone/commits/master">
+    <img alt="GitHub Last Commit" src="https://img.shields.io/github/last-commit/lpmatos/gitlab-clone">
   </a>
 
-  <a href="https://github.com/lpmatos/commitlint">
-    <img alt="Repository Size" src="https://img.shields.io/github/repo-size/lpmatos/commitlint">
+  <a href="https://github.com/lpmatos/gitlab-clone">
+    <img alt="Repository Size" src="https://img.shields.io/github/repo-size/lpmatos/gitlab-clone">
   </a>
 
-  <a href="https://github.com/lpmatos/commitlint/blob/master/LICENSE">
-    <img alt="MIT License" src="https://img.shields.io/github/license/lpmatos/commitlint">
+  <a href="https://github.com/lpmatos/gitlab-clone/blob/master/LICENSE">
+    <img alt="MIT License" src="https://img.shields.io/github/license/lpmatos/gitlab-clone">
   </a>
 </p>
 
@@ -51,7 +51,7 @@
 If you want use this repository you need to make a **git clone**:
 
 ```bash
-git clone --depth 1 https://github.com/lpmatos/commitlint.git -b master
+git clone --depth 1 https://github.com/lpmatos/gitlab-clone.git -b master
 ```
 
 This will give access on your **local machine**.
@@ -65,7 +65,6 @@ To this project you yeed:
   * Husky
   * Commitlint
   * Commitizen
-
 
 ### How to use it?
 
@@ -116,7 +115,7 @@ yarn add @commitlint/config-conventional @commitlint/cli husky commitizen -D
 echo module.exports = {extends: ['@commitlint/config-conventional']} > commitlint.config.js
 ```
 
-add configuration in package.json:
+Add configuration in package.json:
 
 ```json
 "husky": {
@@ -133,7 +132,7 @@ add configuration in package.json:
 
 <strong>Use:</strong>
 
-with dependencies already installed, commits that do not follow the semmantic commit rules will be automatically blocked in the development environment
+With dependencies already installed, commits that do not follow the semmantic commit rules will be automatically blocked in the development environment
 
 ```cmd
 C:\>  git add .
@@ -151,12 +150,11 @@ husky > commit-msg (node v12.14.0)
 husky > commit-msg hook failed (add --no-verify to bypass)
 ```
 
-using the commitzen, previously installed, an auxiliary service will be available to build the commits
+Using the commitzen, previously installed, an auxiliary service will be available to build the commits
 
 ```cmd
 C:\>  git add .
 C:\>  npm run commit
-
 
 cz-cli@4.0.3, cz-conventional-changelog@3.2.0
 
@@ -196,6 +194,10 @@ git add -f .
 git commit -m "Added - Fixing somethings"
 git push -u origin master
 ```
+
+### Versioning
+
+- [CHANGELOG](CHANGELOG.md)
 
 ### License
 
