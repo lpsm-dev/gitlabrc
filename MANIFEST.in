@@ -1,5 +1,1 @@
-include README.md LICENSE AUTHORS.rst
-
-recursive-exclude * __pycache__
-recursive-exclude * *.py[co]
-
+include README.md LICENSE
