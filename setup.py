@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 
-with open('README.rst') as readme_file:
+with open("README.rst") as readme_file:
   readme = readme_file.read()
 
-requirements = ['python-gitlab']
+requirements = ["python-gitlab"]
 
 setup(
   author="Lucca Pessoa da Silva Matos",
@@ -20,10 +20,10 @@ setup(
   name="gitlab-clone-recurisve",
   packages=find_packages(include=["gitlab_clone_recursive"]),
   url="https://github.com/lpmatos/gitlab-clone",
-  version="1.1",
+  version="1.2",
   entry_points={
     "console_scripts": [
-      "gitlab-clone-recursive=gitlab_clone_recursive.clonner:main",
+      "gitlab-clone-recursive=gitlab_clone_recursive.cli:main",
     ]
   },
   zip_safe=False,

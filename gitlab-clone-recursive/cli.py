@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import os
 import sys
 import re
@@ -8,9 +6,6 @@ import time
 import gitlab
 import optparse
 import subprocess
-
-if __name__ != "__main__":
-  exit(1)
 
 def pname():
   pid = os.getpid()
@@ -68,6 +63,9 @@ def main():
 
   (options, args) = parser.parse_args()
 
+  clone(options)
+
+def clone(options):
   # TODO catch errrors
   if not os.path.isdir(options.path):
     sys.stderr.write("Error: destination path does not exist " + options.path + "\n")
