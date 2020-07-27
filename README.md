@@ -178,6 +178,12 @@ cz-cli@4.0.3, cz-conventional-changelog@3.2.0
   revert:   Reverts a previous commit
 ```
 
+### Python Package
+
+```bash
+python3 setup.py register sdist upload
+```
+
 ### How to contribute
 
 >

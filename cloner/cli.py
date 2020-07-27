@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import os
 import sys
 import re
@@ -6,10 +8,10 @@ import time
 import gitlab
 import optparse
 import subprocess
+from settings import Config
 
 def pname():
-  pid = os.getpid()
-  return f"[gitlab-cloner - {str(pid)}]"
+  return f"[gitlab-cloner - {str(os.getpid())}]"
 
 def main():
   parser = optparse.OptionParser("usage: %prog [options]")
