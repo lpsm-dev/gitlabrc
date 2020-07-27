@@ -2,10 +2,10 @@
   <img alt="commitlint" src="https://img2.gratispng.com/20180713/hfv/kisspng-logo-version-control-gitlab-brand-e-commerce-gitlab-5b482945dfad48.8320886315314558139162.jpg" width="250px" float="center"/>
 </p>
 
-<h1 align="center">Welcome to GitLab-Clone repository</h1>
+<h1 align="center">Welcome to GitLab Clone Recursive repository</h1>
 
 <p align="center">
-  <strong>Automate clonning projects and groups in GitLab</strong>
+  <strong>Automate clone your projects in GitLab</strong>
 </p>
 
 <p align="center">
@@ -51,20 +51,26 @@
 If you want use this repository you need to make a **git clone**:
 
 ```bash
-git clone --depth 1 https://github.com/lpmatos/gitlab-clone.git -b master
+git clone --depth 1 https://github.com/lpmatos/gitlab-clone-recursive.git -b master
 ```
 
 This will give access on your **local machine**.
 
 ### Pre-Requisites
 
-To this project you yeed:
+To **develop** in this project you yeed:
 
 * NPM | Yarn (package tool)
 * Install Packages
-  * Husky
-  * Commitlint
-  * Commitizen
+  * NodeJS 
+  * Python
+* Docker and Docker Compose
+
+To **use** this project you yeed:
+
+* Packages
+* Git Installation and Configuration
+* Install Package gitlab-clone-recursive
 
 ### How to use it?
 

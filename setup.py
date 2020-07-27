@@ -1,29 +1,29 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+"""The setup script."""
+
 from setuptools import setup, find_packages
 
-with open("README.rst") as readme_file:
-  readme = readme_file.read()
-
-requirements = ["python-gitlab"]
+requirements = ['requests']
 
 setup(
   author="Lucca Pessoa da Silva Matos",
-  author_email="luccapsm@gmail.com",
-  description="Command line tool to clone projects inside groups in GitLab",
+  author_email='luccapsm@gmail.com',
+  description="Gitlab tool for recursive clone",
   install_requires=requirements,
   license="MIT license",
-  long_description=readme + "\n\n",
   include_package_data=True,
   keywords=[
-    "gitlab", 
-    "gitlab-clone",
+    'gitlab', 'gitlab-api',
   ],
-  name="gitlab-clone-recurisve",
-  packages=find_packages(include=["gitlab_clone_recursive"]),
-  url="https://github.com/lpmatos/gitlab-clone",
-  version="1.2",
+  name='gitlab-clone-recursive',
+  packages=find_packages(include=['gitlab']),
+  url='https://github.com/lpmatos/gitlab-clone-recursive',
+  version='0.0.2',
   entry_points={
     "console_scripts": [
-      "gitlab-clone-recursive=gitlab_clone_recursive.cli:main",
+      "gitlab-clone-recursive=gitlab.cli:main",
     ]
   },
   zip_safe=False,
