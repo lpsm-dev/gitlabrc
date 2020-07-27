@@ -1,0 +1,33 @@
+{
+  "description": "Template Project with Commit Lint",
+  "scripts": {
+    "commit": "git cz"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "9.1.1",
+    "@commitlint/config-conventional": "9.1.1",
+    "commitizen": "4.1.2",
+    "husky": "4.2.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lpmatos/commitlint.git"
+  },
+  "keywords": [],
+  "author": "Lucca Pessoa da Silva Matos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lpmatos/commitlint/issues"
+  },
+  "homepage": "https://github.com/lpmatos/commitlint#readme"
+}
