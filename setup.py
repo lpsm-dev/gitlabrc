@@ -2,7 +2,7 @@
 
 import io
 import os
-from gitlabrc import __version__
+from gitlabcr import __version__
 from setuptools import setup, find_packages
 
 # Package meta-data.
@@ -51,7 +51,7 @@ setup(
   ],
   entry_points = {
     "console_scripts" : [
-      f"{NAME}={NAME}.cli:main",
+      f"{NAME}={NAME}.clone:main",
     ]
   },
   zip_safe = False,

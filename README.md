@@ -17,10 +17,6 @@
     <img alt="GitHub Language Count" src="https://img.shields.io/github/languages/count/lpmatos/gitlab-clone">
   </a>
 
-  <a href="https://github.com/lpmatos/gitlab-clone">
-    <img alt="GitHub Top Language" src="https://img.shields.io/github/languages/top/lpmatos/gitlab-clone">
-  </a>
-
   <a href="https://github.com/lpmatos/gitlab-clone/stargazers">
     <img alt="GitHub Stars" src="https://img.shields.io/github/stars/lpmatos/gitlab-clone?style=social">
   </a>
