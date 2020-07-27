@@ -8,7 +8,18 @@ import time
 import gitlab
 import optparse
 import subprocess
-from settings import Config
+
+from os import environ
+from typing import Text
+
+class Config:
+
+  @staticmethod
+  def get_env(env: Text) -> Text:
+    try:
+      return environ.get(env)
+    except KeyError as error:
+      print(f"Key Error: {error}")
 
 def pname():
   return f"[gitlab-cloner - {str(os.getpid())}]"
@@ -68,9 +79,28 @@ def main():
   clone(options)
 
 def clone(options):
+
+  config = Config()
+
+  url = options.url if options.url else config.get_env("GITLAB_URL")
+  token = options.token if options.token else config.get_env("GITLAB_TOKEN")
+  namespace = options.namespace if options.namespace else None
+
   # TODO catch errrors
+  if not url:
+    sys.stderr.write("\nError: we need gitlab url information\n\n")
+    exit(1)
+
+  if not token:
+    sys.stderr.write("\nError: we need gitlab token information\n\n")
+    exit(1)
+
+  if not namespace:
+    sys.stderr.write("\nError: we need gitlab namespace information\n\n")
+    exit(1)
+  
   if not os.path.isdir(options.path):
-    sys.stderr.write("Error: destination path does not exist " + options.path + "\n")
+    sys.stderr.write("\nError: destination path does not exist " + options.path + "\n\n")
     exit(1)
 
   git_path = shutil.which("git")
@@ -82,9 +112,9 @@ def clone(options):
 
   t = time.time()
 
-  gl = gitlab.Gitlab(options.url, options.token)
+  gl = gitlab.Gitlab(url, token)
 
-  group = gl.groups.get(options.namespace, lazy=True, include_subgroups=True)
+  group = gl.groups.get(namespace, lazy=True, include_subgroups=True)
 
   projects = []
 
@@ -95,7 +125,7 @@ def clone(options):
 
   # Get all projects inside the subgroups
   for group in gl.groups.list(
-    all=True, owned=True, query_parameters={"id": options.namespace}
+    all=True, owned=True, query_parameters={"id": namespace}
   ):
 
     for project in group.projects.list(all=True):
@@ -123,7 +153,7 @@ def clone(options):
       print(pname() + " clone/fetch project " + project.path_with_namespace)
       folders = [f.strip().lower() for f in project.path_with_namespace.split("/")]
       if options.noroot:
-        folders.remove(options.namespace)
+        folders.remove(namespace)
 
       mkdir = options.path
       for i in range(len(folders) - 1):

@@ -1,12 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
-"""The setup script."""
 
 from cloner import __version__
 from setuptools import setup, find_packages
 
-requirements = ['requests']
+requirements = [
+  "python-gitlab"
+]
 
 setup(
   author = "Lucca Pessoa da Silva Matos",
