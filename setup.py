@@ -9,9 +9,7 @@ setup(name='gitlab-clone',
   packages=['gitlab-clone'],
   zip_safe=False,
   install_requires=[
-    'click',
-    'requests',
-    'colorama'
+    'python-gitlab'
   ],
   entry_points = {
     'console_scripts': ['gitlab-clone=gitlab-clone.cli:main'],

@@ -1,0 +1,48 @@
+version: "3.8"
+
+# ==============================================================================
+# ANCHORS
+# ==============================================================================
+
+x-logging: &default-logging
+  driver: "json-file"
+  options:
+    max-size: "500k"
+    max-file: "20"
+
+x-entrypoint: &default-entrypoint
+  entrypoint: >
+    /bin/sh -c "
+      set -e
+      chmod a+x /usr/local/bin/wait && \
+        /usr/local/bin/wait && echo Hello
+      /bin/bash || exit 0
+    "
+x-volumes: &default-volumes
+  volumes:
+    - ./scripts/wait:/usr/local/bin/wait
+
+# ==============================================================================
+# SERVICES
+# ==============================================================================
+
+services:
+
+  python-rabbitmq:
+    container_name: ${CONTAINER_NAME}
+    env_file: [ "./.env" ]
+    build:
+      context: ./${PATH_DOCKERFILE}
+      dockerfile: Dockerfile
+    <<: *default-entrypoint
+    stdin_open: true
+    tty: true
+    healthcheck:
+      test: nc -z rabbitmq 5672 || exit 1
+      interval: 10s
+      timeout: 2s
+      retries: 10
+    restart: on-failure
+    logging: *default-logging
+    depends_on: [ "rabbitmq" ]
+    <<: *default-volumes
