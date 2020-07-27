@@ -1,11 +1,11 @@
 <p align="center">
-  <img alt="commitlint" src="https://res.cloudinary.com/practicaldev/image/fetch/s--0GjySa5t--/c_imagga_scale,f_auto,fl_progressive,h_720,q_auto,w_1280/https://dev-to-uploads.s3.amazonaws.com/i/r1gk3rq3o70t3zghna8w.png" width="250px" float="center"/>
+  <img alt="commitlint" src="https://img2.gratispng.com/20180713/hfv/kisspng-logo-version-control-gitlab-brand-e-commerce-gitlab-5b482945dfad48.8320886315314558139162.jpg" width="250px" float="center"/>
 </p>
 
-<h1 align="center">Welcome to commitlint template repository</h1>
+<h1 align="center">Welcome to GitLab-Clone repository</h1>
 
 <p align="center">
-  <strong>Automating the standardization of good commit messages with commitlint + husky + commitizen</strong>
+  <strong>Automate clonning projects and groups in GitLab</strong>
 </p>
 
 <p align="center">

@@ -14,6 +14,10 @@ FROM base
 
 RUN set -ex && apk update
 
+RUN apk add --update --no-cache \
+      bash=5.0.11-r1 \
+      git=2.24.3-r0
+
 COPY --from=install-env [ "/root/.local", "/usr/local" ]
 
 WORKDIR /usr/src/code
