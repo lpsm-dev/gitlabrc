@@ -6,7 +6,7 @@ from cloner import __version__
 from setuptools import setup, find_packages
 
 # Package meta-data.
-NAME              = "gitlab-cr"
+NAME              = "gitlabcr"
 DESCRIPTION       = "CLI to help you clone projects inside groups in Gitlab"
 URL               = "https://github.com/lpmatos/gitlab-clone-recursive"
 EMAIL             = "luccapsm@gmail.com"
@@ -39,17 +39,19 @@ setup(
   author_email = EMAIL,
   python_requires = REQUIRES_PYTHON,
   url=URL,
-  packages = find_packages(include=["cloner"], exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
+  packages = find_packages(include=["gitlabcr"], exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
   install_requires = REQUIRED,
   include_package_data = True,
   license = "MIT license",
   keywords = [
     "gitlab",
     "gitlab-api",
+    "cli",
+    "python"
   ],
   entry_points = {
     "console_scripts" : [
-      "gitlab-cr=cloner.cli:main",
+      "gitlabcr=gitlabcr.cli:main",
     ]
   },
   zip_safe = False,

@@ -8,18 +8,7 @@ import time
 import gitlab
 import optparse
 import subprocess
-
-from os import environ
-from typing import Text
-
-class Config:
-
-  @staticmethod
-  def get_env(env: Text) -> Text:
-    try:
-      return environ.get(env)
-    except KeyError as error:
-      print(f"Key Error: {error}")
+from . import settings
 
 def pname():
   return f"[gitlab-cloner - {str(os.getpid())}]"
@@ -80,7 +69,7 @@ def main():
 
 def clone(options):
 
-  config = Config()
+  config = settings.Config()
 
   url = options.url if options.url else config.get_env("GITLAB_URL")
   token = options.token if options.token else config.get_env("GITLAB_TOKEN")
@@ -181,6 +170,3 @@ def clone(options):
 
   print(pname() + " mission accomplished in " + str(round(time.time() - t, 2)) + "s")
   exit(0)
-
-if __name__ == '__main__':
-  main()
