@@ -2,7 +2,7 @@
 
 import io
 import os
-from cloner import __version__
+from gitlabrc import __version__
 from setuptools import setup, find_packages
 
 # Package meta-data.
@@ -39,7 +39,7 @@ setup(
   author_email = EMAIL,
   python_requires = REQUIRES_PYTHON,
   url=URL,
-  packages = find_packages(include=["gitlabcr"], exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
+  packages = find_packages(include=[NAME], exclude=["tests", "*.tests", "*.tests.*", "tests.*"]),
   install_requires = REQUIRED,
   include_package_data = True,
   license = "MIT license",
@@ -51,7 +51,7 @@ setup(
   ],
   entry_points = {
     "console_scripts" : [
-      "gitlabcr=gitlabcr.cli:main",
+      f"{NAME}={NAME}.cli:main",
     ]
   },
   zip_safe = False,
