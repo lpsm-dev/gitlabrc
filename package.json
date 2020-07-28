@@ -1,4 +1,7 @@
 {
+  "version": "1.0.0",
+  "author": "Lucca Pessoa da Silva Matos",
+  "license": "MIT",
   "scripts": {
     "commit": "git cz",
     "release": "standard-version"
@@ -19,8 +22,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "version": "1.0.0",
-  "author": "Lucca Pessoa da Silva Matos",
-  "license": "MIT"
+  }
 }
