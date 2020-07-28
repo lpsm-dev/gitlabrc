@@ -1,0 +1,3 @@
+digraph tree {
+    "shared/common/images" [label="shared/common/images"];
+}
