@@ -16,7 +16,7 @@ class Arguments:
 
   def _create_parser_object(self) -> ArgumentParser:
     return ArgumentParser(
-      description="GitlabRC is a CLI that help you to clone all projects inside a specific namespace in Gitlab",
+      description="GitlabRC is a CLI that help you clone projects inside a specific group (namespace) in Gitlab",
       prog="gitlabrc",
       epilog=CLI,
       formatter_class=RawTextHelpFormatter)
@@ -39,12 +39,12 @@ class Arguments:
       dest = "namespace",
       default = "",
       metavar = "<namespace>",
-      help = "namespace in GitLab to clone all projects")
+      help = "namespace that represent a GitLab group used to clone/fetch all projects")
     self._parser.add_argument("-p", "--path",
       dest = "path",
       default = self._config.get_env("PWD"),
       metavar = "<path>",
-      help = "destination path to cloned projects")
+      help = "destination path into your system to clone/fetch all projects")
     self._parser.add_argument("-m", "--method",
       type = CloneMethod.parse,
       dest = "method",
@@ -56,7 +56,7 @@ class Arguments:
       action ="store_true",
       dest = "noroot",
       default = False,
-      help = "don't create root namepace folder in path")
+      help = "don't create root namespace folder in path")
     self._parser.add_argument("--dry-run",
       action = "store_true",
       dest = "dryrun",
@@ -66,7 +66,7 @@ class Arguments:
       action = "store_true",
       dest = "tree",
       default = False,
-      help = "list all repositories using anytree")
+      help = "list all repositories in a tree representation without clone/fetch")
     self._parser.add_argument("--version",
       action = "store_true",
       help = "show version")

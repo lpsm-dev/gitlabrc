@@ -3,105 +3,118 @@
 import os
 import sys
 import re
+from git import Repo
 import shutil
 import time
-import optparse
 from art import *
-import subprocess
-from collections import defaultdict
-from typing import NoReturn
+from tqdm import tqdm
 
-from .arguments import Arguments
-from .method import CloneMethod
 from .process import Process
-from . import __version__ as VERSION
 from .base import GitLabBase
+from .method import CloneMethod
+from .arguments import Arguments
+from . import __version__ as VERSION
+from .tree import Tree
+
+# ==============================================================================
+# FUNCTIONS
+# ==============================================================================
 
 def pname():
   return f"[gitlabrc - {str(os.getpid())}]"
 
-def make_tree(lst): 
-  tree = lambda: defaultdict(tree)
-  d = tree()
-  for x in lst:
-    curr = d
-    for item in x:
-      curr = curr[item]
-  return d
+# ==============================================================================
 
-def make_strs(d, indent=0):
-  strs = []
-  for k, v in d.items():
-    strs.append(" " * indent + str(k))
-    strs.extend(make_strs(v, indent+1))
-  return strs
+def check_git():
+  if shutil.which("git") == "None":
+    sys.stderr.write("Error: git executable not installed or not in $PATH" + "\n")
+    exit(2)
 
-def print_tree(d):
-  print('\n'.join(make_strs(d)))
+# ==============================================================================
+
+def get_subgroups(gl, group, root=False, info=False):
+  if root:
+    return gl.groups.list(all=True, owned=True, query_parameters={"id": group})
+  elif info:
+    return gl.groups.get(group.id, lazy=True)
+  else:
+    return group.subgroups.list(all=True)
+
+# ==============================================================================
+
+def get_projects(gl, group, root=False):
+  if root:
+    return gl.groups.get(group, lazy=True, include_subgroups=True).projects.list(all=True)
+  else:
+    return group.projects.list(all=True)
+
+# ==============================================================================
+
+def get_all_projects(gl, namespace):
+  projects = list()
+  root_projects = get_projects(gl, namespace, root=True)
+  rooot_subgroups = get_subgroups(gl, namespace, root=True)
+
+  if root_projects:
+    for project in root_projects:
+      projects.append(project)
+      print(pname() + " found " + project.path_with_namespace)
+
+  if rooot_subgroups:
+    for group in rooot_subgroups:
+      group_projects = get_projects(gl, group)
+      if group_projects:
+        for group_project in group_projects:
+          projects.append(group_project)
+          print(pname() + " found " + project.path_with_namespace)
+      group_subgroups = get_subgroups(gl, group)
+      if group_subgroups:
+        while True:
+          for group in group_subgroups:
+            relative_subgroup = get_subgroups(gl, group, info=True)
+            for project in get_projects(gl, relative_subgroup):
+              projects.append(project)
+              print(pname() + " found " + project.path_with_namespace)
+            group_subgroups = get_subgroups(gl, relative_subgroup)
+            if len(group_subgroups) == 0: next
+          if len(group_subgroups) == 0: break
+  return projects
+
+# ==============================================================================
 
 def main():
   Art=text2art("GitLabRC")
   print(Art)
+  check_git()
   args = Arguments(argv=None if sys.argv[1:] else ["--help"]).args
   if args.version:
     print(f"Version: {VERSION}")
-    sys.exit(0) 
-  perform(args)
-
-def perform(options):
-  url, token, namespace = options.url, options.token, options.namespace
-  gl = GitLabBase(url, token).client
-  
-  if not os.path.isdir(options.path):
-    sys.stderr.write("\nError: destination path does not exist " + options.path + "\n\n")
-    exit(1)
-
-  git_path = shutil.which("git")
-  if git_path == "None":
-    sys.stderr.write("Error: git executable not installed or not in $PATH" + "\n")
-    exit(2)
+    sys.exit(0)
   else:
-    print(pname() + " using " + git_path)
+    print(f"Version: {VERSION}\n")
+  run(args)
 
-  t = time.time()
+def run(options):
+  url, token, namespace, path = options.url, options.token, options.namespace, options.path
+  gl, t = GitLabBase(url, token).client, time.time()
+  
+  if path:
+    if not os.path.isdir(path):
+      sys.stderr.write("\nError: destination path does not exist " + options.path + "\n\n")
+      exit(1)
 
-  group = gl.groups.get(namespace, lazy=True, include_subgroups=True)
-
-  projects = []
-
-  # Get all projects inside the namespace
-  for project in group.projects.list(all=True):
-    projects.append(project)
-    print(pname() + " found " + project.path_with_namespace)
-
-  # Get all projects inside the subgroups
-  for group in gl.groups.list(all=True, owned=True, query_parameters={"id": namespace}):
-    for project in group.projects.list(all=True):
-      projects.append(project)
-      if not options.tree:
-        print(pname() + " found " + project.path_with_namespace)
-
-    subgroups = group.subgroups.list(all=True)
-    while True:
-      for subgroup in subgroups:
-        real_group = gl.groups.get(subgroup.id, lazy=True)
-        for project in real_group.projects.list(all=True):
-          projects.append(project)
-          if not options.tree:
-            print(pname() + " found " + project.path_with_namespace)
-        subgroups = real_group.subgroups.list(all=True)
-        if len(subgroups) == 0: next
-      if len(subgroups) == 0: break
+  projects = get_all_projects(gl, namespace)
 
   if options.tree:
-    lista = [project.path_with_namespace for project in projects]
-    lista = [[value + " " for value in elemento.split("/")] for elemento in lista]
-    d = make_tree(lista)
-    print_tree(d)
+    tree = Tree()
+    projects_parse = [project.path_with_namespace for project in projects]
+    projects_parse_content = [[value + " " for value in elemento.split("/")] for elemento in projects_parse]
+    d = tree.make_tree(projects_parse_content)
+    tree.print_tree(d)
     exit(0)
   
   if not options.dryrun:
-    for project in projects:
+    for index, project in enumerate(projects, start=1):
       print(pname() + " clone/fetch project " + project.path_with_namespace)
       folders = [f.strip().lower() for f in project.path_with_namespace.split("/")]
       if options.noroot:
@@ -118,7 +131,7 @@ def perform(options):
 
       if not os.path.isdir(clone_path):
         print(f"{pname()} cloning {project_url}")
-        Process().run_command(f"git clone {project_url} {clone_path}")
+        Repo.clone_from(project_url, clone_path, branch="master")
       else:
         print(f"{pname()} fetching {project_url}")
         Process().run_command(f"git -C {clone_path} fetch --all")

@@ -16,6 +16,8 @@ VERSION           = __version__
 # What packages are required for this module to be executed?
 REQUIRED = [
   "art",
+  "tqdm",
+  "GitPython",
   "python-gitlab"
 ]
 
