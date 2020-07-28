@@ -1,7 +1,2 @@
-exclude .gitignore
 include README.md
 include LICENSE
-prune .cache
-prune .git
-prune build
-prune dist

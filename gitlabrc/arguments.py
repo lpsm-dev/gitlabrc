@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os
 from .constants import CLI
 from .settings import Config
 from .method import CloneMethod
@@ -63,6 +62,11 @@ class Arguments:
                                 dest = "dryrun",
                                 default = False,
                                 help = "list all repositories without clone/fetch")
+    self._parser.add_argument("--tree",
+                                action = "store_true",
+                                dest = "tree",
+                                default = False,
+                                help = "list all repositories using anytree")
     self._parser.add_argument("--version",
                                 action = "store_true",
                                 help = "show version")

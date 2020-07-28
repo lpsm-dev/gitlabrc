@@ -6,7 +6,7 @@ from setuptools import setup, find_packages
 
 # Package meta-data.
 NAME              = "gitlabrc"
-DESCRIPTION       = "GitlabRC is a CLI that help you to clone all projects inside a specific namespace in Gitlab"
+DESCRIPTION       = "GitlabRC is a python CLI that help you to clone projects inside namespace (groups) in Gitlab"
 URL               = "https://github.com/lpmatos/gitlabrc"
 EMAIL             = "luccapsm@gmail.com"
 AUTHOR            = "Lucca Pessoa da Silva Matos"
@@ -15,10 +15,11 @@ VERSION           = __version__
 
 # What packages are required for this module to be executed?
 REQUIRED = [
+  "art",
   "python-gitlab"
 ]
 
-# Getting current location of this file.
+# Getting current location.
 here = abspath(dirname(__file__))
 
 # Build setup package.
@@ -37,10 +38,11 @@ setup(
   include_package_data = True,
   license = "MIT license",
   keywords = [
-    "gitlab",
     "git",
     "cli",
-    "python"
+    "python",
+    "gitlab",
+    "gitlab-cli"
   ],
   entry_points = {
     "console_scripts" : [
