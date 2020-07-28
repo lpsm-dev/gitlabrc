@@ -21,7 +21,6 @@
     }
   },
   "version": "1.0.0",
-  "description": "Template Project with Commit Lint",
   "author": "Lucca Pessoa da Silva Matos",
-  "license": "ISC"
+  "license": "MIT"
 }
