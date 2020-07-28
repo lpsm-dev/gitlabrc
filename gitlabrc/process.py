@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 import subprocess
-from typing import Text, Callable
+from typing import Text, Type
 
 class Process:
 
   @staticmethod
-  def run_command(command: Text) -> Text:
+  def run_command(command: Type[Text]) -> Text:
     try:
       if not isinstance(command, str):
         raise ValueError(f"We spec a string value, not {type(command)}")

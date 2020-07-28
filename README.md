@@ -12,3 +12,10 @@ one should be the API key.
 
 You can also specify a destination directory for the repositories
 with the ```-d``` argument.
+
+## Links
+
+* https://docs.python.org/3/library/typing.html
+* https://docs.python.org/3/library/enum.html
+* https://stackoverflow.com/questions/36932/how-can-i-represent-an-enum-in-python
+* https://docs.python.org/3/library/argparse.html
