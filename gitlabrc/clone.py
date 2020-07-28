@@ -9,6 +9,7 @@ import gitlab
 import optparse
 import subprocess
 from .cli import Arguments
+from .method import CloneMethod
 from . import __version__ as VERSION
 
 from art import *
@@ -110,15 +111,18 @@ def perform(options):
       clone_path = options.path + "/" + "/".join(str(x) for x in folders)
       clone_path = re.sub("/+", "/", clone_path)
       print(pname() + " folder " + clone_path)
+
+      project_url = project.http_url_to_repo if options.method is CloneMethod.HTTP else project.ssh_url_to_repo
+
       if not os.path.isdir(clone_path):
-        print(pname() + " cloning " + project.http_url_to_repo)
+        print(pname() + " cloning " + project_url)
         try:
-          subprocess.run(["git", "clone", project.http_url_to_repo, clone_path])
+          subprocess.run(["git", "clone", project_url, clone_path])
         except:
           sys.stderr.write("Unexpected error while cloning: terminating\n")
           exit(2)
       else:
-        print(pname() + " fetching " + project.http_url_to_repo)
+        print(pname() + " fetching " + project_url)
         try:
           subprocess.run(["git", "-C", clone_path, "fetch", "--all"])
         except:

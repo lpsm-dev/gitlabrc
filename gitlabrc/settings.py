@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
 from os import environ
-from typing import Text
+from typing import Text, Type, Optional
 
 class Config:
 
   @staticmethod
-  def get_env(env: Text) -> Text:
-    try:
-      return environ.get(env)
-    except KeyError as error:
-      print(f"Key Error: {error}")
+  def get_env(env: Type[Text], default: Optional[Type[Text]] = None) -> Text:
+    return environ.get(env, default)
       
