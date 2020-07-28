@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from codecs import open
 from gitlabrc import __version__
 from os.path import abspath, dirname, join
 from setuptools import setup, find_packages
