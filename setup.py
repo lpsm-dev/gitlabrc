@@ -44,7 +44,7 @@ setup(
   ],
   entry_points = {
     "console_scripts" : [
-      f"{NAME}={NAME}.clone:main",
+      f"{NAME}={NAME}.cli:main",
     ]
   },
   zip_safe = False,
