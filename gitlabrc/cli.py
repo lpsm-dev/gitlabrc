@@ -5,17 +5,17 @@ import sys
 import re
 import shutil
 import time
-import gitlab
 import optparse
 from art import *
 import subprocess
+from collections import defaultdict
+from typing import NoReturn
+
 from .arguments import Arguments
 from .method import CloneMethod
 from .process import Process
 from . import __version__ as VERSION
-from collections import defaultdict
-
-from typing import NoReturn
+from .base import GitLabBase
 
 def pname():
   return f"[gitlabrc - {str(os.getpid())}]"
@@ -50,23 +50,10 @@ def main():
 
 def perform(options):
   url, token, namespace = options.url, options.token, options.namespace
-  root = Node("", root_path="", url=url)
-  gl = gitlab.Gitlab(url, token)
-
-  if not url:
-    sys.stderr.write("\nError: we need gitlab url information\n\n")
-    exit(1)
-
-  if not token:
-    sys.stderr.write("\nError: we need gitlab token information\n\n")
-    exit(1)
+  gl = GitLabBase(url, token).client
   
   if not os.path.isdir(options.path):
     sys.stderr.write("\nError: destination path does not exist " + options.path + "\n\n")
-    exit(1)
-
-  if not namespace:
-    sys.stderr.write("\nError: we need gitlab namespace information\n\n")
     exit(1)
 
   git_path = shutil.which("git")
