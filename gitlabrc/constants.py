@@ -4,12 +4,15 @@ CLI = """
 
 Examples:
 
-Clone all projects inside specific namespace in current directory:
+Clone all repositories inside specific namespace in current directory:
 gitlabcr -u $GITLAB_URL -t $GITLAB_TOKEN -n msp/charts
 
-Clone all projects inside specific namespace in specific directory:
+Clone all repositories inside specific namespace in specific directory:
 gitlabcr -u $GITLAB_URL -t $GITLAB_TOKEN -n msp/charts -p /home/ubuntu
 
-Getting projects with specific git clone method:
+Getting repositories with specific git clone method:
 gitlabcr -u $GITLAB_URL -t $GITLAB_TOKEN -n msp/charts -p /home/ubuntu -m http
+
+Show all repositories without clone/fetch:
+gitlabcr -u $GITLAB_URL -t $GITLAB_TOKEN -n msp/charts --dry-run
 """
