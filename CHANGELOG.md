@@ -17,21 +17,6 @@ All notable changes to this project will be documented in this file. See [standa
 * enable signal feature ([a23256b](https://github.com/lpmatos/gitlabrc/commit/a23256b8b77985f150044e71647c9be382411f93))
 * version in package.json ([0433b39](https://github.com/lpmatos/gitlabrc/commit/0433b39d683530e11529ccd470c363f39d705b86))
 
-## [1.1.0](https://github.com/lpmatos/gitlabrc/compare/v1.0.1...v1.1.0) (2020-07-29)
-
-
-### Funcionalidades
-
-* enable signal feature ([a23256b](https://github.com/lpmatos/gitlabrc/commit/a23256b8b77985f150044e71647c9be382411f93))
-* version in package.json ([0433b39](https://github.com/lpmatos/gitlabrc/commit/0433b39d683530e11529ccd470c363f39d705b86))
-
-### [1.0.1](https://github.com/lpmatos/gitlabrc/compare/v1.0.0...v1.0.1) (2020-07-29)
-
-
-### Errors Corrigidos
-
-* program version __init__ ([720d1b5](https://github.com/lpmatos/gitlabrc/commit/720d1b56edd0786e20c59d61406d9bb0cdbb057b))
-
 ## 1.0.0 (2020-07-29)
 
 
