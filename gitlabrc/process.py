@@ -27,6 +27,3 @@ class Process:
     except subprocess.CalledProcessError as error:
       sys.stderr.write(f"Subprocess error when run the command {command} - {error}")
       exit(1)
-    except Exception as error:
-      sys.stderr.write(f"Error general exception in run the command {command} - {error}")
-      exit(1)

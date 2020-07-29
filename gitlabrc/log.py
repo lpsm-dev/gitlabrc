@@ -54,8 +54,12 @@ class SingletonLogger(type):
 
 class Log(metaclass=SingletonLogger):
 
-  def __init__(self, log_path: Text, log_file: Text, log_level: Text, logger_name: Text) -> NoReturn:
-
+  def __init__(self, 
+    log_path: Text,
+    log_file: Text,
+    log_level: Text, 
+    logger_name: Text
+  ) -> NoReturn:
     self._log_path = log_path
     self._log_file = log_file
     self._log_level = log_level if log_level in ["CRITICAL", "ERROR", "WARNING", "INFO", "DEBUG", "NOTSET"] else None
@@ -67,10 +71,11 @@ class Log(metaclass=SingletonLogger):
     self._logger.addHandler(ContextHandler(BaseFileHandler()).get_handler(log_file=self.log_file, log_level=self.log_level, formatter=self.formatter))
 
   def _base_configuration_log_colored(self) -> coloredlogs.install:
-    coloredlogs.install(level=self._log_level,
-                        logger=self.logger,
-                        fmt=self.formatter,
-                        milliseconds=True)
+    coloredlogs.install(
+      level=self._log_level,
+      logger=self.logger,
+      fmt=self.formatter,
+      milliseconds=True)
 
   @property
   def log_path(self) -> Text:

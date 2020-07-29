@@ -4,6 +4,7 @@ import os
 import re
 import sys
 import time
+import signal
 import shutil
 from art import *
 from git import Repo
@@ -11,11 +12,10 @@ from git import Repo
 from .log import Log
 from .tree import Tree
 from .process import Process
-from .base import GitLabBase
-from .method import CloneMethod
 from .arguments import Arguments
 from .progress import CloneProgress
 from . import __version__ as VERSION
+from .base import GitLabBase, CloneMethod
 
 # ==============================================================================
 # GLOBAL
@@ -29,6 +29,10 @@ logger = Log("/var/log/gitlabrc", "file.log", "INFO", "GitLabRC").logger
 
 def pname():
   return f"[gitlabrc - {str(os.getpid())}]"
+
+def signal_handler(sig, frame):
+  print("You pressed Ctrl+C!")
+  sys.exit(0)
 
 def check_git():
   if shutil.which("git") == "None":
@@ -84,9 +88,10 @@ def main():
   if args.version:
     print(f"Version: {VERSION}")
     exit(1)
-  else:
-    print(f"Version: {VERSION}\n")
-    run(args)
+  if args.signal:
+    signal.signal(signal.SIGINT, signal_handler)
+  print(f"Version: {VERSION}\n")
+  run(args)
 
 def run(options):
   url, token, namespace, path = options.url, options.token, options.namespace, options.path

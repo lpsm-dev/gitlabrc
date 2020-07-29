@@ -2,7 +2,7 @@
 
 from .constants import CLI
 from .settings import Config
-from .method import CloneMethod
+from .base import CloneMethod
 from typing import NoReturn, Text, Optional, Type, Dict
 from argparse import ArgumentParser, RawTextHelpFormatter
 
@@ -67,6 +67,11 @@ class Arguments:
       dest = "tree",
       default = False,
       help = "list all repositories in a tree representation without clone/fetch")
+    self._parser.add_argument("--signal",
+      action = "store_true",
+      dest = "signal",
+      default = False,
+      help = "enable signal handler to exit in a CTRL + C")
     self._parser.add_argument("--version",
       action = "store_true",
       help = "show version")

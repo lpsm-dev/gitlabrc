@@ -17,7 +17,7 @@ class CloneProgress(RemoteProgress):
     op_code = op_code & RemoteProgress.OP_MASK
 
     if op_code == RemoteProgress.COUNTING:
-      print("counting objects: %d %s" % (cur_count, str(message)), end=end)
+      print(f"counting objects: {cur_count} {message}", end=end)
     elif op_code == RemoteProgress.COMPRESSING:
       print("compressing objects: %d%% (%d/%d) %s" % ((cur_count/max_count) * 100, cur_count, max_count, str(message)), end=end)
     elif op_code == RemoteProgress.WRITING:
