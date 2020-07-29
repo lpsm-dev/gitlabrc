@@ -18,7 +18,9 @@ REQUIRED = [
   "art",
   "tqdm",
   "GitPython",
-  "python-gitlab"
+  "coloredlogs",
+  "python-gitlab",
+  "python-json-logger"
 ]
 
 # Getting current location.

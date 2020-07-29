@@ -1,8 +1,14 @@
 from git import RemoteProgress
+from typing import NoReturn, Optional, Text
 
 class CloneProgress(RemoteProgress):
 
-  def update(self, op_code, cur_count, max_count=None, message=""):
+  def update(self, 
+    op_code: int,
+    cur_count: int,
+    max_count: Optional = None,
+    message: Text = ""
+  ) -> NoReturn:
     end = "\r"
 
     if op_code & RemoteProgress.END:

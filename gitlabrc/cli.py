@@ -8,6 +8,7 @@ import shutil
 from art import *
 from git import Repo
 
+from .log import Log
 from .tree import Tree
 from .process import Process
 from .base import GitLabBase
@@ -15,6 +16,12 @@ from .method import CloneMethod
 from .arguments import Arguments
 from .progress import CloneProgress
 from . import __version__ as VERSION
+
+# ==============================================================================
+# GLOBAL
+# ==============================================================================
+
+logger = Log("/var/log/gitlabrc", "file.log", "INFO", "GitLabRC").logger
 
 # ==============================================================================
 # FUNCTIONS
@@ -25,8 +32,8 @@ def pname():
 
 def check_git():
   if shutil.which("git") == "None":
-    sys.stderr.write("Error: git executable not installed or not in $PATH" + "\n")
-    exit(2)
+    logger.error("Error: git executable not installed or not in $PATH")
+    exit(1)
 
 def get_subgroups(gl, group, root=False, info=False):
   if root:
@@ -43,6 +50,7 @@ def get_projects(gl, group, root=False):
     return group.projects.list(all=True)
 
 def get_all_projects(gl, namespace):
+  logger.info("getting all projects")
   projects = list()
   root_projects = get_projects(gl, namespace, root=True)
   rooot_subgroups = get_subgroups(gl, namespace, root=True)
@@ -70,16 +78,15 @@ def get_all_projects(gl, namespace):
   return projects
 
 def main():
-  Art=text2art("GitLabRC")
-  print(Art)
+  print(text2art("GitLabRC"))
   check_git()
   args = Arguments(argv=None if sys.argv[1:] else ["--help"]).args
   if args.version:
     print(f"Version: {VERSION}")
-    sys.exit(0)
+    exit(1)
   else:
     print(f"Version: {VERSION}\n")
-  run(args)
+    run(args)
 
 def run(options):
   url, token, namespace, path = options.url, options.token, options.namespace, options.path
@@ -87,49 +94,54 @@ def run(options):
   
   if path:
     if not os.path.isdir(path):
-      sys.stderr.write("\nError: destination path does not exist " + options.path + "\n\n")
+      logger.error(f"error: destination path does not exist {options.path}")
       exit(1)
 
-  print("Getting projects...\n")
+  if not namespace:
+    logger.error("error: we need a namespace")
+    exit(1)
 
   projects = get_all_projects(gl, namespace)
 
   if options.tree:
+    print(text2art("Tree"))
     tree = Tree()
-    projects_parse = [project.path_with_namespace for project in projects]
-    projects_parse_content = [[value + " " for value in elemento.split("/")] for elemento in projects_parse]
-    d = tree.make(projects_parse_content)
-    tree.show(d)
+    parse = [project.path_with_namespace for project in projects]
+    parse_content = [[value + " " for value in elemento.split("/")] for elemento in parse]
+    tree.show(tree.make(parse_content))
+    logger.info(f"mission accomplished in {str(round(time.time() - t, 2))} s")
     exit(0)
 
+  print(text2art("Projects"))
   for project in projects:
     print(f"{pname()} found {project.path_with_namespace}")
-
-  print(pname() + " mission accomplished in " + str(round(time.time() - t, 2)) + "s")
-  exit(0)
   
   if not options.dryrun:
     for index, project in enumerate(projects, start=1):
-      print(pname() + " clone/fetch project " + project.path_with_namespace)
+      print(f"{pname()} clone/fetch project {project.path_with_namespace}")
       folders = [f.strip().lower() for f in project.path_with_namespace.split("/")]
-      if options.noroot:
-        folders.remove(namespace)
+
+      if options.noroot: folders.remove(namespace)
+
       mkdir = options.path
       for i in range(len(folders) - 1):
         mkdir = mkdir + "/" + folders[i]
         if not os.path.isdir(mkdir):
           os.mkdir(mkdir)
+
       clone_path = options.path + "/" + "/".join(str(x) for x in folders)
       clone_path = re.sub("/+", "/", clone_path)
-      print(pname() + " folder " + clone_path)
+
+      print(f"{pname()} folder {clone_path}")
+
       project_url = project.http_url_to_repo if options.method is CloneMethod.HTTP else project.ssh_url_to_repo
 
       if not os.path.isdir(clone_path):
-        print(f"\n{pname()} cloning {project_url}")
+        print(text2art("Cloning"))
         Repo.clone_from(project_url, clone_path, branch="master", progress=CloneProgress())
       else:
-        print(f"\n{pname()} fetching {project_url}")
+        print(text2art("Fetching"))
         Process().run_command(f"git -C {clone_path} fetch --all")
         
-  print(pname() + " mission accomplished in " + str(round(time.time() - t, 2)) + "s")
+  logger.info(f"mission accomplished in {str(round(time.time() - t, 2))} s")
   exit(0)
