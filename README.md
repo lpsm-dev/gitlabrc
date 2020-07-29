@@ -12,26 +12,26 @@
 
 #### Dry Run
 
-<p align="center">
-  <img alt="dry-run" src="docs/dry-run.png" width="250px" float="center"/>
+<p align="left">
+  <img alt="dry-run" src="docs/dry-run.png" width="450px" float="center"/>
 </p>
 
 #### Tree
 
-<p align="center">
-  <img alt="tree" src="docs/tree.png" width="250px" float="center"/>
+<p align="left">
+  <img alt="tree" src="docs/tree.png" width="450px" float="center"/>
 </p>
 
 #### Cloning
 
-<p align="center">
-  <img alt="cloning" src="docs/cloning.png" width="250px" float="center"/>
+<p align="left">
+  <img alt="cloning" src="docs/cloning.png" width="450px" float="center"/>
 </p>
 
 ### Usage
 
-<p align="center">
-  <img alt="arguments" src="docs/arguments.png" width="250px" float="center"/>
+<p align="left">
+  <img alt="arguments" src="docs/arguments.png" width="450px" float="center"/>
 </p>
 
 ### How to contribute
