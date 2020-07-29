@@ -22,10 +22,14 @@ COPY --from=install-env [ "/root/.local", "/usr/local" ]
 
 WORKDIR /usr/src/code
 
-COPY [ "./gitlab-clone", "." ]
+COPY [ ".", "." ]
 
 RUN git config --global user.name "root" && \
     git config --global user.email "root@root.com" && \
     git config --global credential.helper cache
 
 RUN find ./ -iname "*.py" -type f -exec chmod a+x {} \; -exec echo {} \;;
+
+RUN python -m pip install --upgrade pip && \
+    pip install .
+    

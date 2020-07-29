@@ -10,19 +10,32 @@ x-logging: &default-logging
     max-size: "500k"
     max-file: "20"
 
+x-entrypoint: &default-entrypoint
+  entrypoint: >
+    /bin/sh -c "
+      set -e
+      echo Hello
+      /bin/bash || exit 0
+    "
+
 # ==============================================================================
 # SERVICES
 # ==============================================================================
 
 services:
 
-  gitlab-clone:
-    container_name: ${CONTAINER_NAME}
+  gitlabrc:
+    container_name: gitlabrc
     env_file: [ "./.env" ]
     build:
-      context: ./${PATH_DOCKERFILE}
+      context: .
       dockerfile: Dockerfile
+    <<: *default-entrypoint
     stdin_open: true
     tty: true
     restart: on-failure
     logging: *default-logging
+    networks: [ "gitlabrc" ]
+
+networks:
+  gitlabrc:
