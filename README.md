@@ -22,12 +22,6 @@
   <img alt="tree" src="docs/tree.png" width="450px" float="center"/>
 </p>
 
-#### Cloning
-
-<p align="left">
-  <img alt="cloning" src="docs/cloning.png" width="450px" float="center"/>
-</p>
-
 ### Usage
 
 <p align="left">
