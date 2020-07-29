@@ -26,7 +26,7 @@ here = abspath(dirname(__file__))
 
 # Build setup package.
 setup(
-  name = NAME,
+  name = "GitLabRC",
   version = VERSION,
   description = DESCRIPTION,
   long_description = open(join(here, "README.md"), "r").read(),
