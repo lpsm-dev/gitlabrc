@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/lpmatos/gitlabrc/compare/v1.0.0...v1.0.1) (2020-07-29)
+
+
+### Errors Corrigidos
+
+* program version __init__ ([720d1b5](https://github.com/lpmatos/gitlabrc/commit/720d1b56edd0786e20c59d61406d9bb0cdbb057b))
+
 ## 1.0.0 (2020-07-29)
 
 
