@@ -25,7 +25,7 @@
 ### Usage
 
 <p align="left">
-  <img alt="arguments" src="docs/arguments.png" width="450px" float="center"/>
+  <img alt="arguments" src="docs/arguments.png" width="700px" float="center"/>
 </p>
 
 ### How to contribute
