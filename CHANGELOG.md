@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/lpmatos/gitlabrc/compare/v1.0.0...v1.1.0) (2020-07-29)
+
+
+### Errors Corrigidos
+
+* program version __init__ ([720d1b5](https://github.com/lpmatos/gitlabrc/commit/720d1b56edd0786e20c59d61406d9bb0cdbb057b))
+* some stuffs in code ([745cdb2](https://github.com/lpmatos/gitlabrc/commit/745cdb202dfc8c9288d14e23d70fae1405dddaac))
+* version program ([44e81c6](https://github.com/lpmatos/gitlabrc/commit/44e81c63507659d4c6aa62104047894ce2e587f2))
+
+
+### Funcionalidades
+
+* enable signal feature ([a23256b](https://github.com/lpmatos/gitlabrc/commit/a23256b8b77985f150044e71647c9be382411f93))
+* version in package.json ([0433b39](https://github.com/lpmatos/gitlabrc/commit/0433b39d683530e11529ccd470c363f39d705b86))
+
 ## [1.1.0](https://github.com/lpmatos/gitlabrc/compare/v1.0.1...v1.1.0) (2020-07-29)
 
 
