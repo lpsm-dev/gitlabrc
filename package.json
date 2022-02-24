@@ -15,7 +15,7 @@
     "@commitlint/cli": "16.2.1",
     "@commitlint/config-conventional": "16.2.1",
     "commitizen": "4.1.2",
-    "husky": "4.2.5",
+    "husky": "4.3.8",
     "standard-version": "8.0.2"
   },
   "config": {
