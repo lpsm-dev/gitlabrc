@@ -1,6 +1,6 @@
 art==4.7
 tqdm==4.43.0
 GitPython==3.1.27
-coloredlogs==14.0
+coloredlogs==14.3
 python-gitlab==2.4.0
 python-json-logger==0.1.11
