@@ -10,9 +10,9 @@ from setuptools import setup, find_packages
 
 NAME              = "gitlabrc"
 DESCRIPTION       = "GitlabRC is a python CLI that help you to clone projects inside namespace (groups) in Gitlab"
-URL               = "https://github.com/lpmatos/gitlabrc"
-EMAIL             = "luccapsm@gmail.com"
-AUTHOR            = "Lucca Pessoa da Silva Matos"
+URL               = "https://github.com/lpsm-dev/gitlabrc"
+EMAIL             = "lpsn-dev@protonmail.com"
+AUTHOR            = "Lucca Matos"
 REQUIRES_PYTHON   = ">=3.6.0"
 VERSION           = __version__
 REQUIRED = [
