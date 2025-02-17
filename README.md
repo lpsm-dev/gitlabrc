@@ -33,7 +33,7 @@ Para verificar o histórico de mudanças, acesse o arquivo [**CHANGELOG.md**](CH
 
 # Troubleshooting
 
-Se você tiver algum problema, abra uma [issue](https://github.com/lpsm-dev/dotfiles/issues/new/choose) nesse projeto.
+Se você tiver algum problema, abra uma [issue](https://github.com/lpsm-dev/gitlabrc/issues/new/choose) nesse projeto.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
