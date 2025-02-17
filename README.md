@@ -1,71 +1,56 @@
-<p align="center">
-  <img alt="terraform" src="https://natanfelles.github.io/assets/img_posts/gitlab.png" width="250px" float="center"/>
-</p>
+<!-- BEGIN_DOCS -->
+<div align="center">
 
-<h1 align="center">Welcome to GitLabRC Repository</h1>
+<a name="readme-top"></a>
 
-<p align="center">
-  <strong>Recursive clone all projects into a namespace (group) in GitLab Server</strong>
-</p>
+<img alt="terraform" src="https://natanfelles.github.io/assets/img_posts/gitlab.png" width="250px" float="center"/>
 
-### Description
+Welcome to GitLabRC Repository
 
-#### Dry Run
+Recursive clone all projects into a namespace (group) in GitLab Server
 
-<p align="left">
-  <img alt="dry-run" src="docs/dry-run.png" width="450px" float="center"/>
-</p>
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](https://www.conventionalcommits.org/en/v1.0.0/)
+[![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://semantic-release.gitbook.io/semantic-release/usage/configuration)
+[![Built with Devbox](https://jetpack.io/img/devbox/shield_galaxy.svg)](https://jetpack.io/devbox/docs/contributor-quickstart/)
 
-#### Tree
+</div>
 
-<p align="left">
-  <img alt="tree" src="docs/tree.png" width="450px" float="center"/>
-</p>
+# Sumário
 
-### Usage
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="left">
-  <img alt="arguments" src="docs/arguments.png" width="700px" float="center"/>
-</p>
+# Contribuição
 
-## ➤ Author <a name = "author"></a>
+Gostaria de contribuir? Isso é ótimo! Temos um guia de contribuição para te ajudar. Clique [aqui](CONTRIBUTING.md) para lê-lo.
 
-👤 Hey!! If you like this project or if you find some bugs feel free to contact me in my channels:
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
->
-> * Linktree: https://linktr.ee/lpmatos
->
+# Versionamento
 
-## ➤ Versioning <a name = "versioning"></a>
+Para verificar o histórico de mudanças, acesse o arquivo [**CHANGELOG.md**](CHANGELOG.md).
 
-To check the change history, please access the [**CHANGELOG.md**](CHANGELOG.md) file.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## ➤ Project status <a name = "project-status"></a>
+# Troubleshooting
 
-This repository is a study project, therefore, it will not always be maintained 👻.
+Se você tiver algum problema, abra uma [issue](https://github.com/lpsm-dev/dotfiles/issues/new/choose) nesse projeto.
 
-## ➤ Donations <a name = "donations"></a>
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<p align="center">
-  <a href="https://www.blockchain.com/pt/btc/address/bc1qn50elv826qs2qd6xhfh6n79649epqyaqmtwky5">
-    <img alt="BTC Address" src="https://img.shields.io/badge/BTC%20Address-black?style=for-the-badge&logo=bitcoin&logoColor=white">
-  </a>
-
-  <a href="https://live.blockcypher.com/ltc/address/ltc1qwzrxmlmzzx68k2dnrcrplc4thadm75khzrznjw/">
-    <img alt="Litecoin Address" src="https://img.shields.io/badge/Litecoin%20Address-black?style=for-the-badge&logo=litecoin&logoColor=white">
-  </a>
-</p>
-
-## ➤ Show your support <a name = "show-your-support"></a>
+# Show your support
 
 <div align="center">
 
-Give me a ⭐️ if this project helped you!
+Dê uma ⭐️ para este projeto se ele te ajudou!
 
-<p>
-  <img alt="gif-header" src="https://www.icegif.com/wp-content/uploads/baby-yoda-bye-bye-icegif.gif" width="350px" float="center"/>
-</p>
+<img src="https://github.com/lpsm-dev/lpsm-dev/blob/0062b174ec9877e6dfc78817f314b4a0690f63ff/.github/assets/yoda.gif" width="225"/>
 
-Made with 💜 by [me](https://github.com/lpmatos) 👋 inspired on [readme-md-generator](https://github.com/kefranabg/readme-md-generator)
+<br>
+<br>
+
+Feito com 💜 pelo **Time de DevOps** :wave: inspirado no [readme-md-generator](https://github.com/kefranabg/readme-md-generator)
 
 </div>
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- END_DOCS -->
