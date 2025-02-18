@@ -1,0 +1,48 @@
+---
+name: Manual - Release
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      id-token: write
+      issues: write
+      pull-requests: write
+    if: ${{ github.ref == 'refs/heads/main' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+      - name: Copy rules
+        run: |
+          cp .github/config/.releaserc.json .
+      - name: Install dependencies
+        run: |
+          npm install --location=global semantic-release@23.0.0 \
+            @semantic-release/changelog@6.0.3 \
+            @semantic-release/commit-analyzer@11.1.0 \
+            @semantic-release/exec@6.0.3 \
+            @semantic-release/git@10.0.1 \
+            @semantic-release/gitlab@13.0.2 \
+            @semantic-release/npm@11.0.2 \
+            @semantic-release/release-notes-generator@12.1.0 \
+            @commitlint/cli@18.4.4 \
+            @commitlint/config-conventional@18.4.4 \
+            conventional-changelog-conventionalcommits@7.0.2
+      - name: Release
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
