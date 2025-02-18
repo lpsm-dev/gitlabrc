@@ -55,12 +55,11 @@ No dia a dia, muitas vezes precisamos clonar projetos do GitLab para nossa máqu
 
 # Features
 
-- Handle GitLab API authentication using a personal access token.
-- Recursively fetch projects from a specified GitLab group, including subgroups.
-- Clone each project's repository to a local directory.
-- Dry-run and list all recursively fetch projects/groups structure.
-- List all projects/groups structure in a tree representation.
-- Disable creation of root group in the local machine.
+- Lidar com a autenticação da API do GitLab usando tokens de acesso pessoal.
+- Buscar/Listar toda a estrutura de projetos/grupos recursivamente a partir de um grupo root do GitLab.
+- Exibir a estrutura de projetos/grupos em formato de árvore.
+- Clonar o repositório de cada projeto para um diretório local.
+- Desativar a criação do grupo root no diretório local quando acontecer o clone.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
