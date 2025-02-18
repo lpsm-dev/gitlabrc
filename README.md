@@ -57,6 +57,18 @@ pip install -r requirements.txt --break-system-packages
 pip install --break-system-packages .
 ```
 
+- Make sure your GitLab API token (gitlab_token) has the necessary permissions to read group and project information.
+- Adjust the GitLab base URL (gitlab_base_url) according to your GitLab instance's API version and configuration.
+
+# Features
+
+- Handle GitLab API authentication using a personal access token.
+- Recursively fetch projects from a specified GitLab group, including subgroups.
+- Clone each project's repository to a local directory.
+- Dry-run and list all recursively fetch projects/groups structure.
+- List all projects/groups structure in a tree representation.
+- Disable creation of root group in the local machine.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # Contribuição
