@@ -144,14 +144,14 @@ def fetch_project(clone_path):
 
 
 def handle_tree_option(projects, t):
-    logger.info("Generating tree representation")
+    logger.debug("Generating tree representation")
     tree = Tree()
     parse = [project.path_with_namespace for project in projects]
     parse_content = [
         [value + " " for value in elemento.split("/")] for elemento in parse
     ]
     tree.show(tree.make(parse_content))
-    logger.info(f"Mission accomplished in {str(round(time.time() - t, 2))} s")
+    logger.debug(f"Mission accomplished in {str(round(time.time() - t, 2))} s")
     exit(0)
 
 
@@ -208,7 +208,7 @@ def run(options):
             clone_path = path + "/" + "/".join(str(x) for x in folders)
             clone_path = re.sub("/+", "/", clone_path)
 
-            logger.info(f"Folder {clone_path}")
+            logger.debug(f"Folder {clone_path}")
 
             project_url = (
                 project.http_url_to_repo

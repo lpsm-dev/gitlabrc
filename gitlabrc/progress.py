@@ -20,12 +20,12 @@ class CloneProgress(RemoteProgress):
         op_code = op_code & RemoteProgress.OP_MASK
 
         if op_code == RemoteProgress.COUNTING:
-            logger.info(f"Counting objects: {cur_count} {message}", end=end)
+            logger.debug(f"Counting objects: {cur_count} {message}", end=end)
         elif op_code == RemoteProgress.COMPRESSING:
             if max_count is not None:
                 max_count_float = float(max_count)
                 cur_count_float = float(cur_count)
-                logger.info(
+                logger.debug(
                     "Compressing objects: %d%% (%d/%d) %s"
                     % (
                         (cur_count_float / max_count_float) * 100,
@@ -39,7 +39,7 @@ class CloneProgress(RemoteProgress):
             if max_count is not None:
                 max_count_float = float(max_count)
                 cur_count_float = float(cur_count)
-                logger.info(
+                logger.debug(
                     "Writing objects: %d%% (%d/%d) %s"
                     % (
                         (cur_count_float / max_count_float) * 100,
@@ -53,7 +53,7 @@ class CloneProgress(RemoteProgress):
             if max_count is not None:
                 max_count_float = float(max_count)
                 cur_count_float = float(cur_count)
-                logger.info(
+                logger.debug(
                     "Remote: resolving deltas: %d%% (%d/%d) %s"
                     % (
                         (cur_count_float / max_count_float) * 100,
