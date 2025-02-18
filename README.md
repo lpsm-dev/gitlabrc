@@ -23,6 +23,9 @@ Recursive clone all projects into a namespace (group) in GitLab Server
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
+- [Visão Geral](#vis%C3%A3o-geral)
+  - [Objetivo](#objetivo)
+  - [Contexto e Motivação](#contexto-e-motiva%C3%A7%C3%A3o)
 - [Instalação](#instala%C3%A7%C3%A3o)
 - [Contribuição](#contribui%C3%A7%C3%A3o)
 - [Versionamento](#versionamento)
@@ -39,7 +42,11 @@ Recursive clone all projects into a namespace (group) in GitLab Server
 
 ## Objetivo
 
+Nesse repositório, apresento para vocês um CLI que facilita o clone de projetos do GitLab de forma recursiva.
+
 ## Contexto e Motivação
+
+No dia a dia, muitas vezes precisamos clonar projetos do GitLab para nossa máquina local. Isso pode ser um processo tedioso e repetitivo, especialmente quando precisamos clonar vários projetos em diferentes grupos. Para facilitar esse processo, desenvolvi um CLI que permite clonar projetos do GitLab de forma recursiva.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

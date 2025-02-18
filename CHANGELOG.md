@@ -1,3 +1,13 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Semantic Versioning Changelog](#semantic-versioning-changelog)
+  - [1.0.0 (2025-02-18)](#100-2025-02-18)
+    - [:bug: Fix](#bug-fix)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Semantic Versioning Changelog
 
 ## 1.0.0 (2025-02-18)
