@@ -28,7 +28,7 @@ REQUIRED = [
 # ==============================================================================
 
 setup(
-  name = "GitLabRC",
+  name = "gitlabrc",
   version = VERSION,
   description = DESCRIPTION,
   long_description = DESCRIPTION,
