@@ -53,14 +53,18 @@ No dia a dia, muitas vezes precisamos clonar projetos do GitLab para nossa máqu
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# Instalação
+# Requirements
+
+- Python >= 3.8
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# Installation
 
 ```bash
 pip install -r requirements.txt --break-system-packages
 pip install --break-system-packages .
 ```
-
-# Requisitos
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
