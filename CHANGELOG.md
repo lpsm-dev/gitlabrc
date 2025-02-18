@@ -1,3 +1,12 @@
+# Semantic Versioning Changelog
+
+## 1.0.0 (2025-02-18)
+
+
+### :bug: Fix
+
+* setup releaserc ([594d788](https://github.com/lpsm-dev/gitlabrc/commit/594d788a4ffaf3ae616578295b1f381e71d53eca))
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
