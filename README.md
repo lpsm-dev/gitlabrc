@@ -57,8 +57,18 @@ pip install -r requirements.txt --break-system-packages
 pip install --break-system-packages .
 ```
 
-- Make sure your GitLab API token (gitlab_token) has the necessary permissions to read group and project information.
-- Adjust the GitLab base URL (gitlab_base_url) according to your GitLab instance's API version and configuration.
+# Requisitos
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# Usage
+
+> [!WARNING]
+>
+> - Make sure your GitLab API token (gitlab_token) has the necessary permissions to read group and project information.
+> - Adjust the GitLab base URL (gitlab_base_url) according to your GitLab instance's API version and configuration.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # Features
 
