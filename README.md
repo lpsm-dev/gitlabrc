@@ -26,10 +26,10 @@ Recursive clone all projects into a namespace (group) in GitLab Server
 - [Visão Geral](#vis%C3%A3o-geral)
   - [Objetivo](#objetivo)
   - [Contexto e Motivação](#contexto-e-motiva%C3%A7%C3%A3o)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
 - [Features](#features)
+- [Requirements](#requirements)
+- [Como Instalar?](#como-instalar)
+- [Como Usar?](#como-usar)
 - [Contribuição](#contribui%C3%A7%C3%A3o)
 - [Versionamento](#versionamento)
 - [Troubleshooting](#troubleshooting)
@@ -53,30 +53,6 @@ No dia a dia, muitas vezes precisamos clonar projetos do GitLab para nossa máqu
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-# Requirements
-
-- Python >= 3.8
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-# Installation
-
-```bash
-pip install -r requirements.txt --break-system-packages
-pip install --break-system-packages .
-```
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-# Usage
-
-> [!WARNING]
->
-> - Make sure your GitLab API token (gitlab_token) has the necessary permissions to read group and project information.
-> - Adjust the GitLab base URL (gitlab_base_url) according to your GitLab instance's API version and configuration.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 # Features
 
 - Handle GitLab API authentication using a personal access token.
@@ -85,6 +61,30 @@ pip install --break-system-packages .
 - Dry-run and list all recursively fetch projects/groups structure.
 - List all projects/groups structure in a tree representation.
 - Disable creation of root group in the local machine.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# Requirements
+
+- Python >= 3.8
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# Como Instalar?
+
+```bash
+pip install -r requirements.txt --break-system-packages
+pip install --break-system-packages .
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+# Como Usar?
+
+> [!WARNING]
+>
+> - Make sure your GitLab API token (gitlab_token) has the necessary permissions to read group and project information.
+> - Adjust the GitLab base URL (gitlab_base_url) according to your GitLab instance's API version and configuration.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
