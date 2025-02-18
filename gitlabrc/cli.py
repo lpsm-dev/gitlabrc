@@ -6,27 +6,20 @@ import sys
 import time
 import signal
 import shutil
-from art import text2art
 from git import Repo
 
-from .log import Log
+from .log import setup_logging
 from .tree import Tree
 from .process import Process
 from .arguments import Arguments
 from .progress import CloneProgress
 from .base import GitLabBase, CloneMethod
 from . import __version__ as VERSION
-
-# ==============================================================================
-# GLOBAL
-# ==============================================================================
-
-logger = Log("/var/log/gitlabrc", "file.log", "INFO", "GitLabRC").logger
+from loguru import logger
 
 # ==============================================================================
 # FUNCTIONS
 # ==============================================================================
-
 
 def pname():
     return f"[gitlabrc - {str(os.getpid())}]"
@@ -38,7 +31,7 @@ def signal_handler(sig, frame):
 
 
 def check_git():
-    if shutil.which("git") == "None":
+    if shutil.which("git") is None:
         logger.error("Error: git executable not installed or not in $PATH")
         exit(1)
 
@@ -62,7 +55,7 @@ def get_projects(gl, group, root=False):
 
 
 def get_all_projects(gl, namespace):
-    logger.info("getting all projects")
+    logger.info("Getting all projects")
     projects = list()
     root_projects = get_projects(gl, namespace, root=True)
     root_subgroups = get_subgroups(gl, namespace, root=True)
@@ -105,11 +98,10 @@ def create_directories(path, folders, namespace, noroot):
 
 def clone_project(project, clone_path, project_url):
     if not os.path.isdir(clone_path):
-        print(text2art("Cloning"))
+        logger.info(f"Cloning {project.path_with_namespace}")
         try:
             if project.empty_repo:
                 logger.warning(f"Repository is empty: {project.path_with_namespace}")
-                print(f"Warning: Repository is empty: {project.path_with_namespace}")
                 os.makedirs(clone_path, exist_ok=True)
                 Repo.init(clone_path)
                 repo = Repo(clone_path)
@@ -130,9 +122,6 @@ def clone_project(project, clone_path, project_url):
                 logger.warning(
                     f"Failed to clone {project.path_with_namespace} with branch 'main': {e_main}",
                 )
-                print(
-                    f"Warning: Failed to clone {project.path_with_namespace} with branch 'main': {e_main}",
-                )
                 try:
                     Repo.clone_from(
                         project_url,
@@ -145,41 +134,38 @@ def clone_project(project, clone_path, project_url):
                     logger.error(
                         f"Failed to clone {project.path_with_namespace} with branch 'master': {e_master}",
                     )
-                    print(
-                        f"Failed to clone {project.path_with_namespace} with branch 'master': {e_master}",
-                    )
         except Exception as e:
             logger.error(f"Failed to clone {project.path_with_namespace}: {e}")
-            print(f"Failed to clone {project.path_with_namespace}: {e}")
 
 
 def fetch_project(clone_path):
-    print(text2art("Fetching"))
+    logger.info(f"Fetching updates for {clone_path}")
     Process().run_command(f"git -C {clone_path} fetch --all")
 
 
 def handle_tree_option(projects, t):
-    print(text2art("Tree"))
+    logger.info("Generating tree representation")
     tree = Tree()
     parse = [project.path_with_namespace for project in projects]
     parse_content = [
         [value + " " for value in elemento.split("/")] for elemento in parse
     ]
     tree.show(tree.make(parse_content))
-    logger.info(f"mission accomplished in {str(round(time.time() - t, 2))} s")
+    logger.info(f"Mission accomplished in {str(round(time.time() - t, 2))} s")
     exit(0)
 
 
 def main():
-    print(text2art("GitLabRC"))
-    check_git()
     args = Arguments(argv=None if sys.argv[1:] else ["--help"]).args
+    setup_logging(log_level=args.log_level)
+    logger.info("Starting GitLabRC")
+    check_git()
     if args.version:
         print(f"Version: {VERSION}")
         exit(1)
     if args.signal:
         signal.signal(signal.SIGINT, signal_handler)
-    print(f"Version: {VERSION}\n")
+    logger.info(f"Version: {VERSION}")
     run(args)
 
 
@@ -194,11 +180,11 @@ def run(options):
 
     if path:
         if not os.path.isdir(path):
-            logger.error(f"error: destination path does not exist {options.path}")
+            logger.error(f"Error: destination path does not exist {options.path}")
             exit(1)
 
     if not namespace:
-        logger.error("error: we need a namespace")
+        logger.error("Error: we need a namespace")
         exit(1)
 
     projects = get_all_projects(gl, namespace)
@@ -206,13 +192,13 @@ def run(options):
     if options.tree:
         handle_tree_option(projects, t)
 
-    print(text2art("Projects"))
+    logger.info("Listing all projects")
     for project in projects:
-        print(f"{pname()} found {project.path_with_namespace}")
+        logger.info(f"Found {project.path_with_namespace}")
 
     if not options.dryrun:
         for index, project in enumerate(projects, start=1):
-            print(f"{pname()} clone/fetch project {project.path_with_namespace}")
+            logger.info(f"Clone/fetch project {project.path_with_namespace}")
             folders = [
                 f.strip().lower() for f in project.path_with_namespace.split("/")
             ]
@@ -222,7 +208,7 @@ def run(options):
             clone_path = path + "/" + "/".join(str(x) for x in folders)
             clone_path = re.sub("/+", "/", clone_path)
 
-            print(f"{pname()} folder {clone_path}")
+            logger.info(f"Folder {clone_path}")
 
             project_url = (
                 project.http_url_to_repo
@@ -234,5 +220,5 @@ def run(options):
             clone_project(project, clone_path, project_url)
             fetch_project(clone_path)
 
-    logger.info(f"mission accomplished in {str(round(time.time() - t, 2))} s")
+    logger.info(f"Mission accomplished in {str(round(time.time() - t, 2))} s")
     exit(0)

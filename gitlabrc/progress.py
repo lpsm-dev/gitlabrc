@@ -2,6 +2,7 @@
 
 from git import RemoteProgress
 from typing import Optional, Union
+from loguru import logger
 
 
 class CloneProgress(RemoteProgress):
@@ -19,13 +20,13 @@ class CloneProgress(RemoteProgress):
         op_code = op_code & RemoteProgress.OP_MASK
 
         if op_code == RemoteProgress.COUNTING:
-            print(f"counting objects: {cur_count} {message}", end=end)
+            logger.info(f"Counting objects: {cur_count} {message}", end=end)
         elif op_code == RemoteProgress.COMPRESSING:
             if max_count is not None:
                 max_count_float = float(max_count)
                 cur_count_float = float(cur_count)
-                print(
-                    "compressing objects: %d%% (%d/%d) %s"
+                logger.info(
+                    "Compressing objects: %d%% (%d/%d) %s"
                     % (
                         (cur_count_float / max_count_float) * 100,
                         cur_count_float,
@@ -38,8 +39,8 @@ class CloneProgress(RemoteProgress):
             if max_count is not None:
                 max_count_float = float(max_count)
                 cur_count_float = float(cur_count)
-                print(
-                    "writing objects: %d%% (%d/%d) %s"
+                logger.info(
+                    "Writing objects: %d%% (%d/%d) %s"
                     % (
                         (cur_count_float / max_count_float) * 100,
                         cur_count_float,
@@ -52,8 +53,8 @@ class CloneProgress(RemoteProgress):
             if max_count is not None:
                 max_count_float = float(max_count)
                 cur_count_float = float(cur_count)
-                print(
-                    "remote: resolving deltas: %d%% (%d/%d) %s"
+                logger.info(
+                    "Remote: resolving deltas: %d%% (%d/%d) %s"
                     % (
                         (cur_count_float / max_count_float) * 100,
                         cur_count_float,

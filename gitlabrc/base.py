@@ -5,6 +5,7 @@ from typing import Text
 from dataclasses import dataclass, field
 from gitlab.client import Gitlab
 import gitlab.exceptions as exceptions
+from loguru import logger
 
 
 class CloneMethod(Enum):
@@ -32,7 +33,7 @@ class GitLabBase:
             instance = Gitlab(self.url, private_token=self.token)
             instance.auth()
         except exceptions.GitlabAuthenticationError as error:
-            print(f"GitLab authenticantion error - {error}")
+            logger.error(f"GitLab authentication error - {error}")
             exit()
         else:
             return instance

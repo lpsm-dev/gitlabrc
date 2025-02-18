@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import sys
 import subprocess
 from typing import Text, Tuple
+from loguru import logger
 
 
 class Process:
@@ -10,7 +10,7 @@ class Process:
     def run_command(command: Text) -> Tuple[Text, Text]:
         try:
             if not isinstance(command, str):
-                sys.stderr.write(f"We expect a string value, not {type(command)}\n")
+                logger.error(f"We expect a string value, not {type(command)}")
                 exit(1)
             process = subprocess.Popen(
                 command,
@@ -22,13 +22,13 @@ class Process:
             )
             output, errors = process.communicate()
             if process.returncode != 0:
-                sys.stderr.write(
-                    f"Run command failed - status process returncode - {process.returncode}\n",
+                logger.error(
+                    f"Run command failed - status process returncode - {process.returncode}",
                 )
                 exit(1)
             return (output, errors)
         except subprocess.CalledProcessError as error:
-            sys.stderr.write(
-                f"Subprocess error when running the command {command} - {error}\n",
+            logger.error(
+                f"Subprocess error when running the command {command} - {error}",
             )
             exit(1)

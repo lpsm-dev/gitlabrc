@@ -16,7 +16,7 @@ class Arguments:
 
     def _create_parser_object(self) -> ArgumentParser:
         return ArgumentParser(
-            description="GitlabRC is a CLI that help you clone projects inside a specific group (namespace) in Gitlab",
+            description="GitlabRC is a CLI that helps you clone projects inside a specific group (namespace) in Gitlab",
             prog="gitlabrc",
             epilog=CLI,
             formatter_class=RawTextHelpFormatter,
@@ -48,7 +48,7 @@ class Arguments:
             dest="namespace",
             default="",
             metavar="<namespace>",
-            help="namespace that represent a GitLab group used to clone/fetch all projects",
+            help="namespace that represents a GitLab group used to clone/fetch all projects",
         )
         self._parser.add_argument(
             "-p",
@@ -56,7 +56,7 @@ class Arguments:
             dest="path",
             default=self._config.get_env("PWD"),
             metavar="<path>",
-            help="destination path into your system to clone/fetch all projects",
+            help="destination path in your system to clone/fetch all projects",
         )
         self._parser.add_argument(
             "-m",
@@ -66,7 +66,7 @@ class Arguments:
             default=self._config.get_env("GITLAB_CLONE_METHOD", "http"),
             metavar="<method>",
             choices=list(CloneMethod),
-            help="method used in GitLabRC to cloning repositories (either <http> or <ssh>)",
+            help="method used in GitLabRC to clone repositories (either <http> or <ssh>)",
         )
         self._parser.add_argument(
             "--disable-root",
@@ -94,6 +94,14 @@ class Arguments:
             action="store_true",
             dest="signal",
             default=False,
-            help="enable signal handler to exit in a CTRL + C",
+            help="enable signal handler to exit on CTRL + C",
         )
         self._parser.add_argument("--version", action="store_true", help="show version")
+        self._parser.add_argument(
+            "--log-level",
+            type=str,
+            dest="log_level",
+            default="WARNING",
+            choices=["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+            help="set the logging level",
+        )
