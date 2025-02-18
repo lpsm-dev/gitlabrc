@@ -57,9 +57,12 @@ No dia a dia, muitas vezes precisamos clonar projetos do GitLab para nossa máqu
 
 - Lidar com a autenticação da API do GitLab usando tokens de acesso pessoal.
 - Buscar/Listar toda a estrutura de projetos/grupos recursivamente a partir de um grupo root do GitLab.
-- Exibir a estrutura de projetos/grupos em formato de árvore.
+- Exibir a estrutura de projetos/grupos em formato de árvore (dry-run).
 - Clonar o repositório de cada projeto para um diretório local.
 - Desativar a criação do grupo root no diretório local quando acontecer o clone.
+- Controlar a verbosidade do CLI para melhorar a experiência do usuário.
+- Permitir utilizar os métodos HTTPS e SSH para clonar projetos.
+- Customizar o diretório local onde os projetos serão clonados.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -82,8 +85,8 @@ pip install --break-system-packages .
 
 > [!WARNING]
 >
-> - Make sure your GitLab API token (gitlab_token) has the necessary permissions to read group and project information.
-> - Adjust the GitLab base URL (gitlab_base_url) according to your GitLab instance's API version and configuration.
+> - Certifique-se de que o seu token da API do GitLab (gitlab_token) tem as permissões necessárias para ler as informações do grupo e do projeto.
+> - Ajuste o URL base do GitLab (gitlab_base_url) de acordo com a versão e a configuração da API da sua instância do GitLab.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
