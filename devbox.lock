@@ -49,6 +49,9 @@
         }
       }
     },
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "resolved": "github:NixOS/nixpkgs/ffa0bb043c25cfc79ff3bc20ba2e44c3724499b1?lastModified=1745900683&narHash=sha256-ZGi2gjgPtmPmplCVz7dNufqkBr00g6EeAloX3GrFQls%3D"
+    },
     "gitleaks@8.23.3": {
       "last_modified": "2025-02-07T11:26:36Z",
       "resolved": "github:NixOS/nixpkgs/d98abf5cf5914e5e4e9d57205e3af55ca90ffc1d#gitleaks",
