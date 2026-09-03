@@ -1,6 +1,6 @@
 art==6.4
 coloredlogs==15.0.1
-GitPython==3.1.44
+GitPython==3.1.58
 loguru==0.7.3
 python-gitlab==5.6.0
 python-json-logger==3.2.1
